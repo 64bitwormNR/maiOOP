@@ -1,1 +1,14 @@
-2 Square Rectangle Trapezoid
+{
+  "variant": 2,
+  "figures": [
+    "Square",
+    "Rectangle",
+    "Trapezoid"
+  ],
+  "containers": [
+  ],
+  "finished_labs": {
+    "lab1": "lab1"
+  }
+}
+
