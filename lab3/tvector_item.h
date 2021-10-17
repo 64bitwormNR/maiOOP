@@ -1,6 +1,7 @@
-#ifndef TVECTORITEM_H 
+//TVECTOR_ITEM.H
+#ifndef TVECTORITEM_H
 #define TVECTORITEM_H
-#define et_tvectoritem Square
+#define et_tvectoritem Figure
 
 #include<iostream>
 #include "square.h"
@@ -13,10 +14,9 @@ class TVectorItem
 		const std::shared_ptr<et_tvectoritem> getElement();
 		~TVectorItem();
 		friend std::ostream& operator<<(std::ostream& os, TVectorItem& obj);
-		
+
 	private:
 		std::shared_ptr<et_tvectoritem> element;
 };
 
 #endif
-

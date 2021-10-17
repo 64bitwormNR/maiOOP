@@ -1,3 +1,4 @@
+//TVCETOR.CPP
 #include "tvector.h"
 #include <iostream>
 #include <cstring>
@@ -95,4 +96,3 @@ TVector::~TVector()
 {
 	clear();
 }
-

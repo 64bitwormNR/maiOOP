@@ -1,4 +1,5 @@
-#ifndef TVECTOR_H 
+//TVCETOR.H
+#ifndef TVECTOR_H
 #define TVECTOR_H
 #define et_tvector TVectorItem
 
@@ -20,7 +21,7 @@ class TVector
 		void erase(int pos);
 		void clear();
 		friend std::ostream& operator<<(std::ostream& os, TVector& obj);
-		
+
 	private:
 		std::shared_ptr<et_tvector> *vals;
 		int len;
@@ -28,4 +29,3 @@ class TVector
 };
 
 #endif
-

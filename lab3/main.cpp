@@ -1,5 +1,9 @@
+//MAIN.CPP
 #include <iostream>
 #include "square.h"
+#include "rectangle.h"
+#include "trapezoid.h"
+#include "point.h"
 #include "tvector.h"
 
 using namespace std;
@@ -7,9 +11,8 @@ using namespace std;
 int main()
 {
 	cout << "Comands:" << endl;
-	cout << "a - add new square (a [side_len])" << endl;
+	cout << "a - add new figure (a r|s|t [input])" << endl;
 	cout << "d - erase square by index (d [idx])" << endl;
-	cout << "s - set square by index (s [idx] [side_len])" << endl;
 	cout << "p - print all containing squares (p)" << endl;
 	cout << "q - quit (q)" << endl;
 	char running = 1;
@@ -23,9 +26,20 @@ int main()
 		{
 			case 'a':
 			{
-				int sl;
-				cin >> sl;
-				vect->push_back(shared_ptr<Square>(new Square(sl)));
+				char fig;
+				cin >> fig;
+				switch(fig)
+				{
+					case 's':
+						vect->push_back(shared_ptr<Figure>(new Square(cin)));
+						break;
+					case 'r':
+						vect->push_back(shared_ptr<Figure>(new Rectangle(cin)));
+						break;
+					case 't':
+						vect->push_back(shared_ptr<Figure>(new Trapezoid(cin)));
+						break;
+				}
 				break;
 			}
 			case 'd':
@@ -33,14 +47,6 @@ int main()
 				int di;
 				cin >> di;
 				vect->erase(di);
-				break;
-			}
-			case 's':
-			{
-				int si,sl;
-				cin >> si >> sl;
-				shared_ptr<TVectorItem> it(new TVectorItem(shared_ptr<Square>(new Square(sl))));
-				(*vect)[si] = it;
 				break;
 			}
 			case 'p':
@@ -59,4 +65,3 @@ int main()
 	}
 	delete vect;
 }
-
