@@ -7,9 +7,9 @@ using namespace std;
 int main()
 {
 	cout << "Comands:" << endl;
-	cout << "a - add new square (a [side_len])" << endl;
+	cout << "a - add new square (a [input])" << endl;
 	cout << "d - erase square by index (d [idx])" << endl;
-	cout << "s - set square by index (s [idx] [side_len])" << endl;
+	cout << "s - set square by index (s [idx] [input])" << endl;
 	cout << "p - print all containing squares (p)" << endl;
 	cout << "q - quit (q)" << endl;
 	char running = 1;
@@ -23,9 +23,7 @@ int main()
 		{
 			case 'a':
 			{
-				int sl;
-				cin >> sl;
-				vect->push_back(Square(sl));
+				vect->push_back(Square(cin));
 				break;
 			}
 			case 'd':
@@ -37,9 +35,9 @@ int main()
 			}
 			case 's':
 			{
-				int si,sl;
-				cin >> si >> sl;
-				Square csq(sl);
+				int si;
+				cin >> si;
+				Square csq(cin);
 				(*vect)[si] = csq;
 				break;
 			}

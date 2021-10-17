@@ -1,3 +1,4 @@
+//TVECTOR_ITEM.CPP
 #include "tvector_item.h"
 #include <iostream>
 
@@ -18,12 +19,11 @@ const et_tvectoritem TVectorItem::getElement()
 
 std::ostream& operator<<(std::ostream& os, TVectorItem& obj)
 {
-	os << "Item: " << obj.element;
+	os << obj.element;
 	return os;
 }
 
 TVectorItem::~TVectorItem()
 {
-	
-}
 
+}

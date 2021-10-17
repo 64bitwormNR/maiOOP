@@ -1,4 +1,5 @@
-#ifndef TVECTORITEM_H 
+//TVECTOR_ITEM.H
+#ifndef TVECTORITEM_H
 #define TVECTORITEM_H
 #define et_tvectoritem Square
 
@@ -13,10 +14,9 @@ class TVectorItem
 		const et_tvectoritem getElement();
 		~TVectorItem();
 		friend std::ostream& operator<<(std::ostream& os, TVectorItem& obj);
-		
+
 	private:
 		et_tvectoritem element;
 };
 
 #endif
-
