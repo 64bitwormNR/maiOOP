@@ -5,6 +5,8 @@
 
 Square::Square() {}
 
+Square::~Square() {}
+
 Square::Square(std::istream &is)
 {
 	is >> *this;

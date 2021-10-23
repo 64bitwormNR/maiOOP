@@ -10,27 +10,28 @@ TVector::TVector()
 	rLen = 0;
 }
 
-int TVector::size()
+TVector::TVector(const TVector& other)
 {
-	return len;
+	len = other.len;
+	rLen = other.rLen;
+	vals = (et_tvector*)malloc(sizeof(et_tvector)*len);
+	memcpy((void*)vals, (void*)other.vals, sizeof(et_tvector)*len);
 }
 
-char TVector::empty()
+void TVector::Erase(int pos)
 {
-	return len == 0;
+	if(len == 1)
+	{
+		Clear();
+		return;
+	}
+	memmove((void*)&(vals[pos]),(void*)&(vals[pos+1]),sizeof(et_tvector)*(len-pos-1));
+	len--;
+	if(len==rLen>>1)
+		resize(len);
 }
 
-et_tvector& TVector::operator[](int idx)
-{
-	return vals[idx];
-}
-
-void TVector::resize(int newsize)
-{
-	vals = (et_tvector*)realloc((void*)vals, sizeof(et_tvector)*newsize);
-}
-
-void TVector::push_back(const et_tvectoritem& sq)
+void TVector::InsertLast(const et_tvector& elem)
 {
 	if(rLen)
 	{
@@ -45,34 +46,33 @@ void TVector::push_back(const et_tvectoritem& sq)
 		rLen=1;
 		resize(rLen);
 	}
-	vals[len]=TVectorItem(sq);
+	vals[len] = elem;
 	len++;
 }
 
-et_tvectoritem TVector::pop_back()
+void TVector::RemoveLast()
 {
-	et_tvector ret = vals[len-1];
-	erase(len-1);
-	return ret.getElement();
+	Erase(len-1);
 }
 
-void TVector::erase(int pos)
+const et_tvector& TVector::Last()
 {
-	memmove((void*)&(vals[pos]),(void*)&(vals[pos+1]),sizeof(et_tvector)*(len-pos-1));
-	len--;
-	if(len==rLen>>1)
-		resize(len);
+	return vals[len-1];
 }
 
-void TVector::clear()
+et_tvector& TVector::operator[](const size_t idx)
 {
-	if(!empty())
-	{
-		delete vals;
-		vals = NULL;
-		len = 0;
-		rLen = 0;
-	}
+	return vals[idx];
+}
+
+bool TVector::Empty()
+{
+	return len == 0;
+}
+
+size_t TVector::Length()
+{
+	return len;
 }
 
 std::ostream& operator<<(std::ostream& os, TVector& obj)
@@ -80,15 +80,32 @@ std::ostream& operator<<(std::ostream& os, TVector& obj)
 	os << '[';
 	for(int i = 0; i < obj.len; i++)
 	{
-		os << obj.vals[i];
+		os << ((Square)obj.vals[i]).Area();
 		if(i != obj.len - 1)
-			os << ", ";
+			os << " ";
 	}
 	os << ']';
 	return os;
 }
 
+void TVector::Clear()
+{
+	if(!Empty())
+	{
+		free(vals);
+		vals = NULL;
+		len = 0;
+		rLen = 0;
+	}
+}
+
+void TVector::resize(int newsize)
+{
+	vals = (et_tvector*)realloc((void*)vals, sizeof(et_tvector)*newsize);
+}
+
 TVector::~TVector()
 {
-	clear();
+	Clear();
 }
+

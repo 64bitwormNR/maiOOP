@@ -1,6 +1,6 @@
 CC = g++
 CFLAGS = -Wall
-SRC = main.cpp square.cpp tvector_item.cpp tvector.cpp
+SRC = point.cpp figure.cpp square.cpp tvector.cpp main.cpp
 PROG = lab2
 
 build:

@@ -23,14 +23,14 @@ int main()
 		{
 			case 'a':
 			{
-				vect->push_back(Square(cin));
+				vect->InsertLast(Square(cin));
 				break;
 			}
 			case 'd':
 			{
 				int di;
 				cin >> di;
-				vect->erase(di);
+				vect->Erase(di);
 				break;
 			}
 			case 's':
