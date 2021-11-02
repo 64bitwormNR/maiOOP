@@ -3,8 +3,13 @@
 
 #include <cmath>
 
+Square::Square() {}
+
+Square::~Square() {printf("destroyed\n");}
+
 Square::Square(std::istream &is)
 {
+	printf("created\n");
 	is >> *this;
 }
 
