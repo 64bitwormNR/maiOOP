@@ -8,6 +8,8 @@
   "containers": [
   ],
   "finished_labs": {
+    "lab0.1:5": "lab01",
+    "lab0.2:5": "lab02",
     "lab1:5": "lab1",
     "lab2:5": "lab2",
     "lab3:5": "lab3",
@@ -16,6 +18,8 @@
     "lab6:5": "lab6"
   },
   "reports": [
+    "lab0.1",
+    "lab0.2",
     "lab1",
     "lab2",
     "lab3",
